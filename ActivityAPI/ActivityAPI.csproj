@@ -219,6 +219,7 @@
     <Compile Include="Repository\ActivityRepository.cs" />
     <Compile Include="Repository\IActivityRepository.cs" />
     <Compile Include="Service\ActivityService.cs" />
+    <Compile Include="Service\IActivityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

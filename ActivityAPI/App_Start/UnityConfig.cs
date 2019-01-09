@@ -2,6 +2,7 @@ using System.Web.Http;
 using Unity;
 using Unity.WebApi;
 using ActivityAPI.Repository;
+using ActivityAPI.Service;
 
 namespace ActivityAPI
 {
@@ -18,6 +19,8 @@ namespace ActivityAPI
             
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
             container.RegisterType<IActivityRepository, ActivityRepository>();
+            container.RegisterType<IActivityService, ActivityService>();
+
         }
     }
 }
