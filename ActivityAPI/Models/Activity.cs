@@ -46,5 +46,10 @@ namespace ActivityAPI.Models
         /// 以報名人數
         /// </summary>
         public int RegisterCount { get; set; }
+
+        /// <summary>
+        /// 活動額滿人數
+        /// </summary>
+        public int Count { get; set; }
     }
 }
