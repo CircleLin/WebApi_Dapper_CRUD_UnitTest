@@ -8,6 +8,11 @@ namespace ActivityAPI.Models
     public class Activity
     {
         /// <summary>
+        /// 活動ID
+        /// </summary>
+        public int ActivityId { get; set; }
+
+        /// <summary>
         /// 活動名稱
         /// </summary>
         public string Name { get; set; }
