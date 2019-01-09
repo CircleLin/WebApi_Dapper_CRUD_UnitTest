@@ -7,7 +7,7 @@ using ActivityAPI.Models;
 
 namespace ActivityAPI.Repository
 {
-    public class ActivityRepository
+    public class ActivityRepository : IActivityRepository
     {
         InMemoryData data;
 
