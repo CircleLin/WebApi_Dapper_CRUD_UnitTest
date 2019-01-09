@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Http;
+using ActivityAPI.Service;
+using System.Web.Http.Cors;
 
 namespace ActivityAPI.Controllers
 {
-    public class ActivityController : Controller
+    [EnableCors(origins:"*",headers:"*",methods:"*")]
+    [RoutePrefix("api/Activity")]
+    public class ActivityController : ApiController
     {
-        // GET: Activity
-        public ActionResult Index()
+        IActivityService service;
+        public ActivityController(IActivityService _service)
         {
-            return View();
+            service = _service;
         }
+
+       
     }
 }

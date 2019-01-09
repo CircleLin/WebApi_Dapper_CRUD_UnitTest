@@ -33,7 +33,7 @@ namespace ActivityAPI.Service
         public bool IsFullyBooked(int activityId)
         {
             var act = repo.GetActivity(activityId);
-            return act.Count >= act.RegisterCount ? true : false;
+            return act.RegisterCount >= act.Count? true : false;
         }
 
         /// <summary>
