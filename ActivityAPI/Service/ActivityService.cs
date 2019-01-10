@@ -82,5 +82,15 @@ namespace ActivityAPI.Service
             return repo.GetActivity(activityId);
         }
 
+        /// <summary>
+        /// 報名活動
+        /// </summary>
+        /// <param name="activityId">活動ID</param>
+        /// <returns></returns>
+        public void RegActivity(int activityId)
+        {
+            var act = this.Get(activityId);
+            act.RegisterCount += 1;
+        }
     }
 }

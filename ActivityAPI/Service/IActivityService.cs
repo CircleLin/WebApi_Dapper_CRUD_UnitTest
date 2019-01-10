@@ -12,5 +12,7 @@ namespace ActivityAPI.Service
         List<Activity> GetAll();
         bool IsFullyBooked(int activityId);
         void Update(Activity activity);
+
+        void RegActivity(int activityId);
     }
 }

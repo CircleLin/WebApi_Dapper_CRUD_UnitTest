@@ -8,27 +8,21 @@ using ActivityAPI.Models;
 namespace ActivityAPI.Repository
 {
     public class ActivityRepository : IActivityRepository
-    {
-        InMemoryData data;
-
-        public ActivityRepository()
-        {
-            data = new InMemoryData();
-        }
+    {     
 
         public void Add(Models.Activity activity)
         {
-            data.Activities.Add(activity);
+            InMemoryData.Activities.Add(activity);
         }
 
         public Models.Activity GetActivity(int id)
         {
-             return data.Activities.Find(x => x.ActivityId == id);            
+             return InMemoryData.Activities.Find(x => x.ActivityId == id);            
         }
 
         public List<Models.Activity> GetAllActivity()
         {
-            return data.Activities;
+            return InMemoryData.Activities;
         }
 
         public void Update(Models.Activity activity)
@@ -48,7 +42,7 @@ namespace ActivityAPI.Repository
 
         public void Delete(Models.Activity activity)
         {
-            data.Activities.Remove(activity);
+            InMemoryData.Activities.Remove(activity);
         }
     }
 }
