@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,7 +10,7 @@ namespace ActivityAPI.Models
     {
         /// <summary>
         /// 活動ID
-        /// </summary>
+        /// </summary>      
         public int ActivityId { get; set; }
 
         /// <summary>
@@ -20,7 +21,7 @@ namespace ActivityAPI.Models
         /// <summary>
         /// 活動說明與描述
         /// </summary>
-        public string Desc { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// 活動日期
@@ -40,12 +41,12 @@ namespace ActivityAPI.Models
         /// <summary>
         /// 活動費用
         /// </summary>
-        public decimal Price { get; set; }
+        public int Price { get; set; }
 
         /// <summary>
         /// 活動早鳥價
         /// </summary>
-        public decimal EarlyPrice { get; set; }
+        public int EarlyPrice { get; set; }
 
         /// <summary>
         /// 以報名人數

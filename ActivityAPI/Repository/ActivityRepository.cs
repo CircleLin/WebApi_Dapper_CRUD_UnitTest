@@ -4,45 +4,48 @@ using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using ActivityAPI.Models;
+using Dapper;
+using System.Data.SqlClient;
 
 namespace ActivityAPI.Repository
 {
     public class ActivityRepository : IActivityRepository
-    {     
+    {
+        string connString = System.Configuration.ConfigurationManager.ConnectionStrings["sqlconn"].ToString();
+        private SqlConnection _sqlconn;
+
+        public SqlConnection sqlconn
+        {
+            get
+            {
+                return _sqlconn ?? new SqlConnection(connString);
+            }
+        }
 
         public void Add(Models.Activity activity)
         {
-            InMemoryData.Activities.Add(activity);
+            sqlconn.Execute("insert into Activity(Name,Description,ActivityDate,ImgUrl,Teacher,Price,EarlyPrice,RegisterCount,Count)values(@Name,@Description,@ActivityDate,@ImgUrl,@Teacher,@Price,@EarlyPrice,@RegisterCount,@Count)", activity);
         }
 
         public Models.Activity GetActivity(int id)
         {
-             return InMemoryData.Activities.Find(x => x.ActivityId == id);            
+            return sqlconn.Query<Models.Activity>("select * from Activity where ActivityId = @ActivityId", new { ActivityId = id }).FirstOrDefault();
         }
 
         public List<Models.Activity> GetAllActivity()
         {
-            return InMemoryData.Activities;
+            return sqlconn.Query<Models.Activity>("select * from Activity").ToList();
         }
 
         public void Update(Models.Activity activity)
         {
-            var updateActivity = this.GetActivity(activity.ActivityId);
-            updateActivity.Name = activity.Name;
-            updateActivity.ActivityDate = activity.ActivityDate;
-            updateActivity.Count = activity.Count;
-            updateActivity.Desc = activity.Desc;
-            updateActivity.Price = activity.Price;
-            updateActivity.EarlyPrice = activity.EarlyPrice;
-            updateActivity.ImgUrl = activity.ImgUrl;
-            updateActivity.Teacher = activity.Teacher;
-            updateActivity.RegisterCount = activity.RegisterCount;            
+            
         }
 
 
         public void Delete(Models.Activity activity)
         {
-            InMemoryData.Activities.Remove(activity);
+            
         }
     }
 }
