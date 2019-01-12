@@ -13,7 +13,7 @@ namespace ActivityAPI
         {
             // Web API 設定和服務
             config.EnableCors();
-            config.Filters.Add(new ModelValidationFilter()); //驗證model state
+            config.Filters.Add(new ModelValidationFilterAttribute()); //驗證model state
             // Web API 路由
             config.MapHttpAttributeRoutes();
 

@@ -113,7 +113,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionFilter\ModelValidationFilter.cs" />
+    <Compile Include="ActionFilter\ModelValidationFilterAttribute.cs" />
+    <Compile Include="ActionFilter\NotImplementFilterAttribute.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />

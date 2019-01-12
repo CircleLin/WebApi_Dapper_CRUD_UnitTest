@@ -10,7 +10,7 @@ using System.Web.Http.Filters;
 
 namespace ActivityAPI.ActionFilter
 {
-    public class ModelValidationFilter: ActionFilterAttribute
+    public class ModelValidationFilterAttribute: ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {

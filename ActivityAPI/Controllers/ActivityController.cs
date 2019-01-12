@@ -5,12 +5,15 @@ using System.Net.Http;
 using System.Web.Http.Description;
 using System.Collections.Generic;
 using System.Net;
+using ActivityAPI.ActionFilter;
+using System;
 
 namespace ActivityAPI.Controllers
 {
     /// <summary>
     /// 活動controller
     /// </summary>       
+    [NotImplementFilter]
     public class ActivityController : BaseApiController
     {
         IActivityService service;
@@ -100,5 +103,18 @@ namespace ActivityAPI.Controllers
                 return response;
             }
         }       
+
+        [HttpPut]
+        public HttpResponseMessage UpdateActivity(int Id, Models.Activity activity)
+        {
+            throw new NotImplementedException("Update Api is not Implemented");
+        }
+
+        [HttpDelete]
+        public HttpResponseMessage DeleteActivity(int Id, Models.Activity activity)
+        {
+            throw new NotImplementedException("Delete Api is not Implemented");
+        }
+
     }
 }
