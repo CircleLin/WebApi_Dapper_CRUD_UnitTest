@@ -5,14 +5,13 @@ namespace ActivityAPI.Service
 {
     public interface IActivityService
     {
-        void Add(Activity activity);
-        int CheckCurrentCount(int activityId);
-        void Delete(int Id);
+        bool Add(Activity activity);
+        int CheckRegCountNow(int activityId);
+        bool Delete(int Id);
         Activity Get(int activityId);
         List<Activity> GetAll();
         bool IsFullyBooked(int activityId);
-        void Update(Activity activity);
-
+        bool Update(Activity activity);
         void RegActivity(int activityId);
     }
 }

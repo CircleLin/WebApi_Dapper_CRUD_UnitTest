@@ -20,7 +20,7 @@ namespace ActivityAPI.Service
        /// </summary>
        /// <param name="activityId">活動ID</param>
        /// <returns></returns>
-        public int CheckCurrentCount(int activityId)
+        public int CheckRegCountNow(int activityId)
         {
             return repo.GetActivity(activityId).RegisterCount;
         }
@@ -40,27 +40,30 @@ namespace ActivityAPI.Service
         /// 新增活動
         /// </summary>
         /// <param name="activity">活動物件</param>
-        public void Add(Models.Activity activity)
+        public bool Add(Models.Activity activity)
         {
-            repo.Add(activity);
+            var result = repo.Add(activity);
+            return result > 0 ? true : false;
         }
 
         /// <summary>
         /// 更新活動內容
         /// </summary>
         /// <param name="activity"></param>
-        public void Update(Models.Activity activity)
+        public bool Update(Models.Activity activity)
         {
-            repo.Update(activity);
+            var result = repo.Update(activity);
+            return result > 0 ? true : false;
         }
 
         /// <summary>
         /// 刪除活動
         /// </summary>
         /// <param name="activity"></param>
-        public void Delete(int Id)
+        public bool Delete(int Id)
         {            
-            repo.Delete(Id);
+            var result = repo.Delete(Id);
+            return result > 0 ? true : false;
         }
 
         /// <summary>
