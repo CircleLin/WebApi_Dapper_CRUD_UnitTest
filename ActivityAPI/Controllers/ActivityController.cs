@@ -55,8 +55,11 @@ namespace ActivityAPI.Controllers
         [ResponseType(typeof(void))]  
         public IHttpActionResult PostActivity([FromBody] Models.Activity activity)
         {    
-            service.Add(activity);
-            return Ok();
+            var addResult = service.Add(activity);
+            if (addResult)
+                return Ok();
+            else
+                return BadRequest("Insert Failed");
         }
 
         /// <summary>
