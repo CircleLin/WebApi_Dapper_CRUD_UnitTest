@@ -4,6 +4,7 @@ using System.Web.Http.Cors;
 using System.Net.Http;
 using System.Web.Http.Description;
 using System.Collections.Generic;
+using System.Net;
 
 namespace ActivityAPI.Controllers
 {
@@ -33,16 +34,18 @@ namespace ActivityAPI.Controllers
         /// <param name="Id">活動ID</param>
         /// <returns></returns>
         [ResponseType(typeof(Models.Activity))]           
-        public IHttpActionResult GetActivity(int Id)
+        public Models.Activity GetActivity(int Id)
         {            
             var act = service.Get(Id);
             if(act != null)
             {
-                return Ok(act);
+                return act;
             }
             else
             {
-                return NotFound();
+                var msg = "sorry, Activity with Id =" + Id + " not found";
+                throw new HttpResponseException(
+                    Request.CreateErrorResponse(HttpStatusCode.BadRequest, msg));
             }
         }
 
@@ -53,13 +56,18 @@ namespace ActivityAPI.Controllers
         /// <returns></returns>
         [HttpPost]
         [ResponseType(typeof(void))]  
-        public IHttpActionResult PostActivity([FromBody] Models.Activity activity)
+        public HttpResponseMessage PostActivity([FromBody] Models.Activity activity)
         {    
             var addResult = service.Add(activity);
             if (addResult)
-                return Ok();
+            {
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
             else
-                return BadRequest("Insert Failed");
+            {
+                var msg = ""+activity.Name+" was created failed";
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, msg);
+            }
         }
 
         /// <summary>
