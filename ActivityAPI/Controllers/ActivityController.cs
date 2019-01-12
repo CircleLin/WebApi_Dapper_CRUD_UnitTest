@@ -54,7 +54,7 @@ namespace ActivityAPI.Controllers
         [HttpPost]
         [ResponseType(typeof(void))]  
         public IHttpActionResult PostActivity([FromBody] Models.Activity activity)
-        {     
+        {    
             service.Add(activity);
             return Ok();
         }

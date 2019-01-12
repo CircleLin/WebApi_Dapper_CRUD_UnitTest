@@ -58,9 +58,9 @@ namespace ActivityAPI.Service
         /// 刪除活動
         /// </summary>
         /// <param name="activity"></param>
-        public void Delete(Models.Activity activity)
-        {
-            repo.Delete(activity);
+        public void Delete(int Id)
+        {            
+            repo.Delete(Id);
         }
 
         /// <summary>

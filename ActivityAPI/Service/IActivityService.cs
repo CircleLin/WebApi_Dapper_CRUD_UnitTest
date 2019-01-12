@@ -7,7 +7,7 @@ namespace ActivityAPI.Service
     {
         void Add(Activity activity);
         int CheckCurrentCount(int activityId);
-        void Delete(Activity activity);
+        void Delete(int Id);
         Activity Get(int activityId);
         List<Activity> GetAll();
         bool IsFullyBooked(int activityId);
